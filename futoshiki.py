@@ -21,18 +21,9 @@ Empty inequalities in the board are represented as '-'
 
 """
 import sys
-
-#======================================================================#
-#*#*#*# Optional: Import any allowed libraries you may need here #*#*#*#
-#======================================================================#
-
 import copy
 import numpy as np
 import time
-
-#=================================#
-#*#*#*# Your code ends here #*#*#*#
-#=================================#
 
 ROW = "ABCDEFGHI"
 COL = "123456789"
@@ -198,9 +189,6 @@ class Board:
         Runs the forward checking algorithm to restrict the domains of all variables based on the values
         of reassigned variables
         '''
-        #======================================================================#
-		#*#*#*# TODO: Write your implementation of forward checking here #*#*#*#
-		#======================================================================#
         
         domains = copy.deepcopy(self.domains)
         for var in reassigned_variables:
@@ -246,36 +234,13 @@ class Board:
                         
         self.domains = domains
         return True
-        
-        #=================================#
-		#*#*#*# Your code ends here #*#*#*#
-		#=================================#
-        
-    #=================================================================================#
-	#*#*#*# Optional: Write any other functions you may need in the Board Class #*#*#*#
-	#=================================================================================#
-    
-    #=================================#
-	#*#*#*# Your code ends here #*#*#*#
-	#=================================#
-
-#================================================================================#
-#*#*#*# Optional: You may write helper functions in this space if required #*#*#*#
-#================================================================================#        
-
-#=================================#
-#*#*#*# Your code ends here #*#*#*#
-#=================================#
 
 def backtracking(board):
     '''
     Performs the backtracking algorithm to solve the board
     Returns only a solved board
     '''
-    #==========================================================#
-	#*#*#*# TODO: Write your backtracking algorithm here #*#*#*#
-	#==========================================================#
-    
+
     var = board.get_variables()
         
     if all(board.config[v] !=0 for v in var):
@@ -304,28 +269,16 @@ def backtracking(board):
         board.domains = original_domains
      
     return None
-
-    #=================================#
-	#*#*#*# Your code ends here #*#*#*#
-	#=================================#
     
 def solve_board(board):
     '''
     Runs the backtrack helper and times its performance.
     Returns the solved board and the runtime
     '''
-    #================================================================#
-	#*#*#*# TODO: Call your backtracking algorithm and time it #*#*#*#
-	#================================================================#
-    
     start_time = time.time()
     solved_board = backtracking(board)
     runtime = time.time() - start_time
     return solved_board, runtime
-
-    #=================================#
-	#*#*#*# Your code ends here #*#*#*#
-	#=================================#
 
 def print_stats(runtimes):
     '''
